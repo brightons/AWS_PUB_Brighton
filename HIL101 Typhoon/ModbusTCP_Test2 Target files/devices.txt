@@ -1,0 +1,21 @@
+uReZwQtgFhKDOLGP43h0pdSSYU88zDuSAzVLKPctn7G6dcY4MYmNI/jAa1e7LjBR3bilHMidxaE/YYB7sgJzOw==
+{
+  "compilation_timestamp": "2025-12-24 02:34:52",
+  "sw_version": "2025.4",
+  "devices": [
+    {
+      "device_type": "HIL404",
+      "hw_id": "Virtual device",
+      "serial_no": "Virtual device",
+      "license_expiry": "2122-08-01",
+      "maintenance_expiry": null,
+      "access_type": "Full",
+      "paralleling": "Master",
+      "not_supported": null,
+      "toolboxes": []
+    }
+  ]
+}
+-----BEGIN SIGNATURE-----
+UnSU0ttq7RuF4kPdPyY0O+XCTFzCH1PtXzLEnDiPaXQ0B5zCikmPEgMIZgHnBNpVD7hVnwOaW+L5WJGEH7SP7R7gUgnzwSSsp8VECmkQCHp+71Xc4i4J/57FPDDe3ZXmSedJR8Huhi1KA6cmBkGVdWKhp7yN7wjPHVaqrpQSJWuO5eIHT0FG/eoCa/AMG25gqGVnYKFUw4xQSaQ/dXHc2PkC3jKxY8KS6ZJWlMUDVPpNW9Z5axewUCA6IxKFSwT5f/Bqx59s6pDO6z+JCSndNxzv311RskGFuxWRwI3TmipAJ0S11nT5GXXW+BRGmqFsnO6fTdNtTblnciLSqN1ReQ==
+-----END SIGNATURE-----

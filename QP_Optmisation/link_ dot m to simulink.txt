@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=YlqrTb2wu2Q
+
+
+
+Sparse matrix to full: https://uk.mathworks.com/help/optim/ug/code-generation-in-quadprog.html

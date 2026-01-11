@@ -1,0 +1,399 @@
+version = 4.2
+
+//
+// Saved by sw version: 2025.4
+//
+
+model "New schematic 15-Dec-2025@20-39-06" {
+    configuration {
+        hil_device = "VHIL+"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = auto
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_analog_outputs_on_sim_stop_mode = Offset values
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        dma_enable = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_term_var_location = "local"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        excluded_component_from_locking_list = ""
+        export_out_file = ""
+        export_lock_top_level = True
+        export_encrypt_library = True
+        export_encrypt_resources = True
+        solver_type = "DAE"
+        integration_method = "BDF"
+        max_sim_step = 1e-4
+        simulation_time = 1.0
+        abs_tol = 1e-3
+        rel_tol = 1e-3
+        init_sim_step = 1e-6
+        r_on_sw = 1e-3
+        v_on_diode = 0.1
+        data_sampling_rate = 0
+        feedthrough_validation_error_level = error
+    }
+
+    component Subsystem Root {
+        component "core/Grid" Grid1 {
+            Sb = "1e6"
+            Vb = "400"
+            resistance_cont = "10.0"
+        }
+        [
+            position = 7788, 8012
+            rotation = down
+            size = 152, 120
+        ]
+
+        component "core/(32) Directional Power" "(32) Directional Power1" {
+        }
+        [
+            position = 8536, 8096
+            size = 144, 160
+        ]
+
+        component "core/Three-phase Meter" "Three-phase Meter1" {
+        }
+        [
+            position = 7976, 8124
+            size = 48, 72
+        ]
+
+        component "core/Three-phase Variable Load" "Three-phase Variable Load1" {
+            enable_ext_ref = "True"
+            enable_outputs = "True"
+        }
+        [
+            position = 8076, 8584
+            size = 184, 160
+        ]
+
+        component "core/Battery ESS (Generic)" "Battery ESS (Generic)1" {
+            Pnom = "250e3"
+            Snom = "400e3"
+            Vnom_sec_LL = "400"
+            include_transformer = "False"
+        }
+        [
+            position = 7484, 8576
+            size = 144, 136
+        ]
+
+        component "core/NPC PV inverter" "NPC PV inverter1" {
+        }
+        [
+            position = 8152, 8256
+            size = 288, 239
+        ]
+
+        component "core/NPC PV inverter" "NPC PV inverter2" {
+        }
+        [
+            position = 7608, 8248
+            size = 288, 239
+        ]
+
+        component "core/PV Power Plant (Generic)" "PV Power Plant (Generic)1" {
+            Vnom_sec_LL = "400"
+            include_transformer = "False"
+        }
+        [
+            position = 7788, 8572
+            size = 144, 136
+        ]
+
+        component "core/Scope" Scope1 {
+        }
+        [
+            position = 8304, 8452
+        ]
+
+        component "core/PV Power Plant (Generic) UI" "PV Power Plant (Generic) UI1" {
+        }
+        [
+            position = 8456, 8592
+            size = 56, 136
+        ]
+
+        junction Junction1 pe
+        [
+            position = 7740, 8228
+        ]
+
+        junction Junction2 pe
+        [
+            position = 7740, 8228
+        ]
+
+        junction Junction3 pe
+        [
+            position = 7772, 8252
+        ]
+
+        junction Junction4 pe
+        [
+            position = 7804, 8288
+        ]
+
+        junction Junction5 pe
+        [
+            position = 7840, 8320
+        ]
+
+        junction Junction6 pe
+        [
+            position = 7836, 8320
+        ]
+
+        connect Junction1 Grid1.A as Connection3
+        connect "Battery ESS (Generic)1.A" Junction1 as Connection4
+        [
+            breakpoints = 7436, 8228; 7596, 8228
+        ]
+        connect Junction2 Junction1 as Connection6
+        [
+            breakpoints = 7740, 8228; 7596, 8228
+        ]
+        connect "Three-phase Variable Load1.A" Junction2 as Connection7
+        connect Grid1.B Junction3 as Connection9
+        [
+            breakpoints = 7772, 8252
+        ]
+        connect Junction3 "Battery ESS (Generic)1.B" as Connection10
+        [
+            breakpoints = 7468, 8252
+        ]
+        connect "PV Power Plant (Generic)1.B" Junction3 as Connection11
+        connect "Three-phase Variable Load1.B" Junction3 as Connection12
+        connect "PV Power Plant (Generic)1.C" Junction4 as Connection14
+        connect Junction4 Grid1.C as Connection15
+        connect "Three-phase Variable Load1.C" Junction4 as Connection16
+        [
+            breakpoints = 8100, 8288; 7804, 8288
+        ]
+        connect "PV Power Plant (Generic)1.A" Junction2 as Connection20
+        [
+            breakpoints = 7740, 8284
+        ]
+        connect "Battery ESS (Generic)1.C" Junction4 as Connection21
+        connect Junction5 "PV Power Plant (Generic)1.N" as Connection24
+        [
+            breakpoints = 7836, 8320
+        ]
+        connect Grid1.N Junction6 as Connection26
+        connect Junction6 Junction5 as Connection27
+        connect "Battery ESS (Generic)1.N" Junction6 as Connection28
+        connect "Three-phase Variable Load1.N" Junction6 as Connection29
+    }
+
+    default {
+        "core/Scope" {
+            signals_data = "{}"
+            selected_signals = "[]"
+        }
+
+        "core/(32) Directional Power" {
+            Pn = "1e6"
+            DP_thresh = "-0.01"
+            DP_delay = "0.16667"
+            block_fnc = "False"
+            inst_trip = "True"
+            trip_mem = "True"
+            execution_rate = "100e-6"
+        }
+
+        "core/Battery ESS (Generic)" {
+            Pnom = "20e3"
+            Snom = "40e3"
+            Vnom_LL = "400"
+            fnom = "50"
+            include_transformer = "True"
+            Vnom_sec_LL = "2300"
+            wL_pu = "0.1"
+            Zt_pu = "0.04"
+            dc_link_margin = "0.4"
+            opc_pu = "0.0"
+            Rshunt_pu = "2000"
+            Tfast = "100e-6"
+            Tslow = "500e-6"
+            Sg_sc_pu = "20"
+            PFg = "0.1"
+            cont_type = "Ideal"
+            resistance_cont = "1.0"
+            nom_batt_voltage = "200"
+            nom_batt_capacity = "120"
+            soc_range = "[10, 90]"
+            grid_code_fcn = "LVRT"
+            lvrt_req = "Germany"
+            vs_lvrt = "[0.0, 0.9, 0.901]"
+            ts_lvrt = "[0.15, 1.5, 1.501]"
+            preview = "Plot LVRT curve"
+            voltvar_req = "Custom"
+            vs_voltvar = "[0.6, 0.9, 1.1, 1.3]"
+            qs_voltvar = "[1.3, 0.0, 0.0, -0.7]"
+            preview_voltvar = "Plot VoltVAr curve"
+            hzwatt_req = "Custom"
+            fs_hzwatt = "[47.5, 47.8, 49.8, 50.2, 51.5]"
+            ps_hzwatt = "[2.0, 2.0, 0.0, 0.0, -0.52]"
+            preview_hzwatt = "Plot HzWatt curve"
+            voltwatt_req = "Custom"
+            vs_voltwatt = "[0.8, 1.06, 1.1, 1.3]"
+            ps_voltwatt = "[1.0, 1.0, 0.2, 0.2]"
+            preview_voltwatt = "Plot VoltWatt curve"
+        }
+
+        "core/Grid" {
+            Vb = "2300"
+            f = "50"
+            Sb = "20*40e3"
+            pf = "0.1"
+            Tfast = "100e-6"
+            cont_type = "Ideal"
+            resistance_cont = "0"
+        }
+
+        "core/NPC PV inverter" {
+            fnom = "60"
+            vnom = "277"
+        }
+
+        "core/PV Power Plant (Generic)" {
+            Pnom = "250e3"
+            Snom = "np.sqrt(2.0)*250e3"
+            Vnom_LL = "400"
+            fnom = "50"
+            include_transformer = "True"
+            Vnom_sec_LL = "13.8e3"
+            ILR_factor = "1.2"
+            wL_pu = "0.1"
+            Zt_pu = "0.04"
+            dc_link_margin = "0.4"
+            opc_pu = "0.0"
+            Rshunt_pu = "2000"
+            Tfast = "100e-6"
+            Tslow = "500e-6"
+            Sg_sc_pu = "20"
+            PFg = "0.1"
+            cont_type = "Ideal"
+            resistance_cont = "1.0"
+            grid_code_fcn = "LVRT"
+            lvrt_req = "Germany"
+            vs_lvrt = "[0.0, 0.9, 0.901]"
+            ts_lvrt = "[0.15, 1.5, 1.501]"
+            preview = "Plot LVRT curve"
+            voltvar_req = "Custom"
+            vs_voltvar = "[0.6, 0.9, 1.1, 1.3]"
+            qs_voltvar = "[1.3, 0.0, 0.0, -0.7]"
+            preview_voltvar = "Plot VoltVAr curve"
+            hzwatt_req = "Custom"
+            fs_hzwatt = "[47.5, 47.8, 49.8, 50.2, 51.5]"
+            ps_hzwatt = "[2.0, 2.0, 0.0, 0.0, -0.52]"
+            preview_hzwatt = "Plot HzWatt curve"
+            voltwatt_req = "Custom"
+            vs_voltwatt = "[0.8, 1.06, 1.1, 1.3]"
+            ps_voltwatt = "[1.0, 1.0, 0.2, 0.2]"
+            preview_voltwatt = "Plot VoltWatt curve"
+        }
+
+        "core/Three-phase Meter" {
+            R = "1e5"
+            n_cycles = "1"
+            Ts = "100e-6"
+            enable_probes = "True"
+            enable_out = "True"
+            remove_snubber = "False"
+            enable_bandwidth = "False"
+            bandwidth = "10e3"
+            VAn = "True"
+            VBn = "True"
+            VCn = "True"
+            VAB = "False"
+            VBC = "False"
+            VCA = "False"
+            VN = "False"
+            IA = "True"
+            IB = "True"
+            IC = "True"
+            IN = "False"
+            freq = "False"
+            VLn_rms = "False"
+            VLL_rms = "False"
+            VLn_avg_rms = "False"
+            VLL_avg_rms = "False"
+            VN_rms = "False"
+            I_rms = "False"
+            I_avg_rms = "False"
+            IN_rms = "False"
+            P_method = "alpha-beta"
+            enable_extra_out = "False"
+            P_meas = "False"
+        }
+
+        "core/Three-phase Variable Load" {
+            core_type = "Series"
+            Vnom_rms = "400"
+            fnom = "50"
+            Snom = "3000"
+            pf_nom = "0.9"
+            include_harmonic = "False"
+            harmonic_list = "[1,3,5,7,9]"
+            execution_rate = "100e-6"
+            Z_ind_pu = "0.05"
+            pf_snubber = "0.4"
+            enable_ext_ref = "False"
+            enable_outputs = "False"
+            cpl_type = "None"
+            R_snb = "1e1"
+            C_snb = "1e-6"
+            cpl_orientation = "Load"
+            cpl_fixed_snb = "True"
+            cpl_inductance = "1e-6"
+            enable_three_wire = "False"
+            voltage_meas_in_adj_core = "False"
+        }
+    }
+}
